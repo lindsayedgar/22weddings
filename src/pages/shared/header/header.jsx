@@ -4,7 +4,7 @@ import React from 'react';
 import { Drawer, MenuItem, IconButton } from 'material-ui';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import { grey700 } from 'material-ui/styles/colors';
-import Logo from '../../../assets/logo.png';
+import Logo from '../../../img/logo.png';
 
 class Header extends React.Component {
   constructor(props) {
@@ -30,8 +30,11 @@ class Header extends React.Component {
           onRequestChange={(open) => this.setState({open})}
           openSecondary={true}
         >
-          <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-          <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+          <MenuItem onClick={this.handleClose}>Home</MenuItem>
+          <MenuItem onClick={this.handleClose}>About Me</MenuItem>
+          <MenuItem onClick={this.handleClose}>Services</MenuItem>
+          <MenuItem onClick={this.handleClose}>Testimonials</MenuItem>
+          <MenuItem onClick={this.handleClose}>Contact</MenuItem>
         </Drawer>
       </div>
     )

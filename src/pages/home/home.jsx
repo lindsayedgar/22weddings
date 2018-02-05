@@ -13,7 +13,7 @@ class Home extends React.Component {
       <React.Fragment>
         <Header />
         <div className="home">
-          <h1>The Beginning</h1>
+          <div className="parallax"></div>
         </div>
       </React.Fragment>
     )
