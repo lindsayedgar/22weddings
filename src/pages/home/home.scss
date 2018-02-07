@@ -1,7 +1,6 @@
 .home {
   .parallax {
     margin-top: 89px;
-    width: 100vw;
     height: 100vh;
     background-image: url('../img/fennes_wedding.jpg');
     background-repeat: no-repeat;
@@ -10,30 +9,47 @@
     position: relative;
   }
 
-  .content {
-    padding: 50px;
+  .flex {
+    width: 100%;
+    display: flex;
+  }
+
+  .about, .services {
+    padding: 5%;
+
+    h1 {
+      margin-top: 0;
+      color: white;
+    }
+
+    p {
+      color: white;
+      font-weight: bold;
+    }
   }
 
   .about {
-    display: flex;
+    background: #F26B4D;
+  }
 
-    .img {
-      max-width: 100%;
-      height: auto;
-    }
+  .services {
+    background: #58C3A2;
+  }
 
-    .text {
-      h1 {
-        margin-top: 0;
-      }
-    }
+  .contact {
+    padding: 5%;
 
     img {
-      max-width: 200px;
+      max-width: 40%;
+      border-radius: 2%;
     }
+  }
+}
 
-    div {
-      padding: 10px;
+@media screen and (max-width: 600px) {
+  .home {
+    .flex {
+      flex-wrap: wrap;
     }
   }
 }
