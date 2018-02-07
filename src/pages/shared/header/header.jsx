@@ -31,10 +31,10 @@ class Header extends React.Component {
           openSecondary={true}
         >
           <a href="/"><MenuItem onClick={this.handleClose}>Home</MenuItem></a>
-          <a href="#aboutme"><MenuItem onClick={this.handleClose}>About Me</MenuItem></a>
+          <a href="#about"><MenuItem onClick={this.handleClose}>About Me</MenuItem></a>
           <MenuItem onClick={this.handleClose}>Services</MenuItem>
           <MenuItem onClick={this.handleClose}>Testimonials</MenuItem>
-          <MenuItem onClick={this.handleClose}>Contact</MenuItem>
+          <a href="#contact"><MenuItem onClick={this.handleClose}>Contact</MenuItem></a>
         </Drawer>
       </div>
     )

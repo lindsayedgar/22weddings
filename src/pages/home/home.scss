@@ -37,10 +37,24 @@
   }
 
   .contact {
-    padding: 5%;
+    padding: 5% 10%;
+
+    .form {
+      box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
+      border-radius: 5%;
+      padding: 5%;
+
+      button {
+        float: right;
+      }
+
+      .input {
+        width: 100%;
+      }
+    }
 
     img {
-      max-width: 40%;
+      max-width: 30%;
       border-radius: 2%;
     }
   }

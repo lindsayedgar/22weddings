@@ -3,10 +3,17 @@
 import React from 'react';
 import Header from '../shared/header/header.jsx';
 import Profile from '../../img/profile.jpg';
+import { TextField, FlatButton } from 'material-ui';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.styles = {
+      underlineStyle: {
+        borderColor: '#F26B4D'
+      }
+    };
   }
 
   render() {
@@ -17,7 +24,7 @@ class Home extends React.Component {
           <div className="parallax"></div>
           <div className="content">
             <div className="flex">
-              <span id="aboutme" className="anchor"></span>
+              <span id="about" className="anchor"></span>
               <div className="about">
                 <h1>About Lindsay</h1>
                 <p>
@@ -40,13 +47,40 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="contact">
-              <h1>Contact</h1>
               <div className="flex">
                 <div className="img">
                   <img src={Profile} />
                 </div>
                 <div className="form">
-                  <p>Testing</p>
+                  <span id="contact" className="anchor"></span>
+                  <p>Contact</p>
+                  <form onSubmit={this.submitForm}>
+                    <TextField
+                      className="input"
+                      hintText="Name"
+                      underlineFocusStyle={this.styles.underlineStyle}
+                      required
+                    />
+                    <br />
+                    <TextField
+                      className="input"
+                      hintText="Email"
+                      underlineFocusStyle={this.styles.underlineStyle}
+                      required
+                    />
+                    <br />
+                    <TextField
+                      className="input"
+                      hintText="Message"
+                      multiLine={true}
+                      rows={1}
+                      rowsMax={10}
+                      underlineFocusStyle={this.styles.underlineStyle}
+                      required
+                    />
+                    <br />
+                    <FlatButton label="Submit" type="Submit" />
+                  </form>
                 </div>
               </div>
             </div>
@@ -54,6 +88,11 @@ class Home extends React.Component {
         </div>
       </React.Fragment>
     )
+  }
+
+  submitForm = (e) => {
+    e.preventDefault();
+    console.log('testing form');
   }
 }
 
