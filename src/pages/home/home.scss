@@ -37,25 +37,30 @@
   }
 
   .contact {
-    padding: 5% 10%;
+    max-height: 50vh;
+    overflow: hidden;
 
     .form {
       box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
-      border-radius: 5%;
       padding: 5%;
+      width: 50%;
+      flex: 1;
 
       button {
         float: right;
       }
 
       .input {
-        width: 100%;
+        width: 100% !important;
       }
     }
 
-    img {
-      max-width: 30%;
-      border-radius: 2%;
+    .img {
+      width: 50%;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }
@@ -64,6 +69,15 @@
   .home {
     .flex {
       flex-wrap: wrap;
+    }
+
+    .contact {
+      max-height: none;
+      overflow: visible;
+
+      .img {
+        display: none;
+      }
     }
   }
 }
