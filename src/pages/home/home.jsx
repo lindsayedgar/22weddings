@@ -47,7 +47,7 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="contact">
-              <div className="contact__wrapper flex">
+              <div className="flex">
                 <div className="testimonials">
                   <h1>Testimonials</h1>
                   <p>

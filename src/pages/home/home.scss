@@ -42,9 +42,7 @@
     .form {
       box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
       padding: 5%;
-      width: 50%;
       flex: 1;
-      overflow: auto;
 
       button {
         float: right;
@@ -57,13 +55,8 @@
 
     .testimonials {
       flex: 1;
-      overflow: hidden;
       background: #EC407A;
       box-sizing: border-box;
-
-      img {
-        width: 100%;
-      }
     }
   }
 }
@@ -75,11 +68,8 @@
     }
 
     .contact {
-      max-height: none;
-      overflow: visible;
-
-      .img {
-        display: none;
+      .form, .testimonials {
+        flex: auto;
       }
     }
   }
