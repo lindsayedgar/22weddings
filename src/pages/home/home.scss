@@ -1,6 +1,7 @@
 .home {
+  margin-top: 89px;
+
   .parallax {
-    margin-top: 89px;
     height: 100vh;
     background-image: url('../img/cover.jpg');
     background-repeat: no-repeat;
@@ -15,7 +16,7 @@
     display: flex;
   }
 
-  .about, .services {
+  .about, .services-home, .testimonials {
     padding: 5%;
 
     h1 {
@@ -33,15 +34,11 @@
     background: #F26B4D;
   }
 
-  .services {
+  .services-home {
     background: #58C3A2;
   }
 
   .contact {
-    &__wrapper {
-      height: 50vh;
-    }
-
     .form {
       box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
       padding: 5%;
@@ -58,9 +55,11 @@
       }
     }
 
-    .img {
-      width: 50%;
+    .testimonials {
+      flex: 1;
       overflow: hidden;
+      background: #EC407A;
+      box-sizing: border-box;
 
       img {
         width: 100%;

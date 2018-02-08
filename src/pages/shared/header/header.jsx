@@ -31,7 +31,7 @@ class Header extends React.Component {
           onRequestChange={(open) => this.setState({open})}
           openSecondary={true}
         >
-          <a href="/"><MenuItem onClick={this.handleClose}>Home</MenuItem></a>
+          <Link to="/"><MenuItem onClick={this.handleClose}>Home</MenuItem></Link>
           <a href="#about"><MenuItem onClick={this.handleClose}>About Me</MenuItem></a>
           <Link to="/services"><MenuItem onClick={this.handleClose}>Services</MenuItem></Link>
           <MenuItem onClick={this.handleClose}>Testimonials</MenuItem>
