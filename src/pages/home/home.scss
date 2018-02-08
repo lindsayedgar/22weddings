@@ -2,10 +2,11 @@
   .parallax {
     margin-top: 89px;
     height: 100vh;
-    background-image: url('../img/fennes_wedding.jpg');
+    background-image: url('../img/cover.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
     position: relative;
   }
 
@@ -37,14 +38,16 @@
   }
 
   .contact {
-    max-height: 50vh;
-    overflow: hidden;
+    &__wrapper {
+      height: 50vh;
+    }
 
     .form {
       box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
       padding: 5%;
       width: 50%;
       flex: 1;
+      overflow: auto;
 
       button {
         float: right;
@@ -57,6 +60,7 @@
 
     .img {
       width: 50%;
+      overflow: hidden;
 
       img {
         width: 100%;

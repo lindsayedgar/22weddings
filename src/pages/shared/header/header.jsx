@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Drawer, MenuItem, IconButton } from 'material-ui';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import { grey700 } from 'material-ui/styles/colors';
@@ -32,7 +33,7 @@ class Header extends React.Component {
         >
           <a href="/"><MenuItem onClick={this.handleClose}>Home</MenuItem></a>
           <a href="#about"><MenuItem onClick={this.handleClose}>About Me</MenuItem></a>
-          <MenuItem onClick={this.handleClose}>Services</MenuItem>
+          <Link to="/services"><MenuItem onClick={this.handleClose}>Services</MenuItem></Link>
           <MenuItem onClick={this.handleClose}>Testimonials</MenuItem>
           <a href="#contact"><MenuItem onClick={this.handleClose}>Contact</MenuItem></a>
         </Drawer>
