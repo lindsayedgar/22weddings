@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Header from '../shared/header/header.jsx';
-import Profile from '../../img/profile.jpg';
 import { TextField, FlatButton } from 'material-ui';
 
 class Home extends React.Component {
