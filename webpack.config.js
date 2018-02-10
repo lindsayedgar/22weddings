@@ -1,6 +1,9 @@
+const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+
+const constants = require('./src/app/constants.json');
 
 const ejsTemplate = new htmlWebpackPlugin({
     template: 'src/index.ejs'
@@ -8,6 +11,9 @@ const ejsTemplate = new htmlWebpackPlugin({
 const extractSass = new ExtractTextPlugin({
     filename: "styles/[name].min.css",
     disable: !(process.env.NODE_ENV === "production")
+});
+const constantPlugin = new webpack.DefinePlugin({
+  constants: JSON.stringify(constants)
 });
 
 module.exports = {
