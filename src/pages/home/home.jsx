@@ -63,7 +63,6 @@ class Home extends React.Component {
                   <p>{this.state.content.testimonialsText}</p>
                 </div>
                 <div className="form">
-                  <span id="contact" className="anchor"></span>
                   <p>Contact</p>
                   <form onSubmit={this.submitForm}>
                     <TextField
@@ -92,6 +91,7 @@ class Home extends React.Component {
                     <br />
                     <FlatButton label="Submit" type="Submit" />
                   </form>
+                  <span id="contact" className="anchor"></span>
                 </div>
               </div>
             </div>
