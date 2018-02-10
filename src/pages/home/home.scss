@@ -69,6 +69,10 @@
       flex-wrap: wrap;
     }
 
+    .about, .services-home {
+      flex: auto;
+    }
+
     .contact {
       .form, .testimonials {
         flex: auto;
