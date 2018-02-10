@@ -73,7 +73,8 @@ module.exports = {
     },
     plugins: [
       ejsTemplate,
-      extractSass
+      extractSass,
+      constantPlugin
     ],
     node: {
       fs: 'empty',
