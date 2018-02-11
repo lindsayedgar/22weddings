@@ -3,10 +3,45 @@
 
   .service-list {
     padding: 2% 5%;
+
+    h1 {
+      font-style: italic;
+    }
   }
 
   .testimonial-list {
     padding: 2% 5%;
     background: #EEEEEE;
+
+    h1 {
+      font-style: italic;
+    }
+
+    div {
+      margin: 4% 0;
+
+      img {
+        width: 10%;
+        display: inline-block;
+        border-radius: 10%;
+      }
+
+      .review {
+        width: 90%;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        padding: 0 5%;
+        box-sizing: border-box;
+
+        h3 {
+          margin-top: 0;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
   }
 }

@@ -1,87 +1,74 @@
 'use strict';
 
 import React from 'react';
-import Header from '../shared/header/header.jsx';
+import http from '../../actions/http';
 
 class Services extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      content: null
+    };
+  }
+
+  componentWillMount() {
+    this.getContent();
   }
 
   render() {
+    const services = this.state.content && this.state.content.filter((entry) => {
+      return entry.sys.contentType.sys.id === 'service';
+    });
+    const testimonials = this.state.content && this.state.content.filter((entry) => {
+      return entry.sys.contentType.sys.id === 'testimonial';
+    });
+
     return (
-      <React.Fragment>
-        <Header />
-        <div className="services">
-          <section className="service-list">
-            <h1>Services</h1>
-            <div className="service-list__1">
-              <h3>Service 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-            </div>
-            <div className="service-list__2">
-              <h3>Service 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-            </div>
-            <div className="service-list__3">
-              <h3>Service 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-            </div>
-          </section>
-          <section className="testimonial-list">
-            <h1>Testimonials</h1>
-            <div className="testimonial-list__1">
-              <h3>Testimonial 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-            </div>
-            <div className="testimonial-list__2">
-              <h3>Testimonial 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-            </div>
-            <div className="testimonial-list__3">
-              <h3>Testimonial 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum
-              </p>
-            </div>
-          </section>
-        </div>
-      </React.Fragment>
+      <div className="services">
+        <section className="service-list">
+          <span id="services" className="anchor"></span>
+          <h1>Services</h1>
+          {
+            services && services.map((service, key) => {
+              return (
+                <div key={key}>
+                  <h3>{service.fields.title}</h3>
+                  <p>{service.fields.description}</p>
+                </div>
+              )
+            })
+          }
+        </section>
+        <section className="testimonial-list">
+          <span id="testimonials" className="anchor"></span>
+          <h1>Testimonials</h1>
+          {
+            testimonials && testimonials.map((testimonial, key) => {
+              const url = testimonial.fields.reference.fields.image.fields.file.url;
+              return (
+                <div key={key}>
+                  <img src={`https:${url}`} />
+                  <div className="review">
+                    <h3>{testimonial.fields.title}</h3>
+                    <p>{testimonial.fields.description}</p>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </section>
+      </div>
     )
+  }
+
+  getContent = () => {
+    http.get(constants.routes.GET_CONTENT)
+      .then((results) => {
+        this.setState({
+          content: results.items
+        });
+      });
   }
 }
 

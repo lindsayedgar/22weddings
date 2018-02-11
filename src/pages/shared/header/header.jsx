@@ -33,8 +33,8 @@ class Header extends React.Component {
         >
           <Link to="/"><MenuItem onClick={this.handleClose}>Home</MenuItem></Link>
           <a href="/#about"><MenuItem onClick={this.handleClose}>About Me</MenuItem></a>
-          <Link to="/services"><MenuItem onClick={this.handleClose}>Services</MenuItem></Link>
-          <MenuItem onClick={this.handleClose}>Testimonials</MenuItem>
+          <a href="/services/#services"><MenuItem onClick={this.handleClose}>Services</MenuItem></a>
+          <a href="/services/#testimonials"><MenuItem onClick={this.handleClose}>Testimonials</MenuItem></a>
           <a href="/#contact"><MenuItem onClick={this.handleClose}>Contact</MenuItem></a>
         </Drawer>
       </div>
