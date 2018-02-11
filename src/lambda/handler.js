@@ -7,7 +7,6 @@ const client = contentful.createClient({
 
 module.exports.getEntries = (event, context, callback) => {
   console.log(`starting getContent: event: ${JSON.stringify(event)}, context: ${JSON.stringify(context)}`);
-  const entryId = JSON.parse(event.body).entryId;
   return client.getEntries()
     .then((entries) => {
       const response = {
