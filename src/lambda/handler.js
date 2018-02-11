@@ -5,18 +5,18 @@ const client = contentful.createClient({
   accessToken: process.env.CONTENT_TOKEN
 });
 
-module.exports.getContent = (event, context, callback) => {
+module.exports.getEntries = (event, context, callback) => {
   console.log(`starting getContent: event: ${JSON.stringify(event)}, context: ${JSON.stringify(context)}`);
   const entryId = JSON.parse(event.body).entryId;
-  return client.getEntry(entryId)
-    .then((entry) => {
+  return client.getEntries()
+    .then((entries) => {
       const response = {
         statusCode: 200,
         headers: {
           "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
           "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
         },
-        body: JSON.stringify(entry)
+        body: JSON.stringify(entries)
       };
       callback(null, response);
     })

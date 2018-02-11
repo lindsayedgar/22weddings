@@ -63,14 +63,14 @@ functions:
   #         method: post
   #         cors: ${self:custom.corsConfig}
   getContent:
-    name: ${self:service}-getContent
-    description: Retrieves content from Contentful
-    handler: src/lambda/handler.getContent
+    name: ${self:service}-getEntries
+    description: Retrieves entries from Contentful
+    handler: src/lambda/handler.getEntries
     environment:
       CONTENT_SPACE: ${env:CONTENT_SPACE}
       CONTENT_TOKEN: ${env:CONTENT_TOKEN}
     events:
       - http:
-          path: /getContent
-          method: post
+          path: /content/getEntries
+          method: get
           cors: ${self:custom.corsConfig}
