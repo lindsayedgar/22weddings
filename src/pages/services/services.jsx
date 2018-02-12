@@ -7,6 +7,7 @@ class Services extends React.Component {
   constructor(props) {
     super(props);
 
+    this.content = null;
     this.state = {
       content: null
     };
@@ -16,11 +17,20 @@ class Services extends React.Component {
     this.getContent();
   }
 
+  componentDidMount() {
+    this.handleAnchor();
+  }
+
+  componentDidUpdate() {
+    this.handleAnchor();
+  }
+
   render() {
-    const services = this.state.content && this.state.content.filter((entry) => {
+    const content = this.content || this.state.content;
+    const services = content && content.filter((entry) => {
       return entry.sys.contentType.sys.id === 'service';
     });
-    const testimonials = this.state.content && this.state.content.filter((entry) => {
+    const testimonials = content && content.filter((entry) => {
       return entry.sys.contentType.sys.id === 'testimonial';
     });
 
@@ -40,8 +50,8 @@ class Services extends React.Component {
             })
           }
         </section>
+        <span id="testimonials" className="anchor"></span>
         <section className="testimonial-list">
-          <span id="testimonials" className="anchor"></span>
           <h1>Testimonials</h1>
           {
             testimonials && testimonials.map((testimonial, key) => {
@@ -63,12 +73,25 @@ class Services extends React.Component {
   }
 
   getContent = () => {
+    if (window.localStorage.content) {
+      this.content = JSON.parse(window.localStorage.content);
+      return;
+    }
+
     http.get(constants.routes.GET_CONTENT)
       .then((results) => {
         this.setState({
           content: results.items
         });
       });
+  }
+
+  handleAnchor() {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      element.scrollIntoView(true);
+    }
   }
 }
 

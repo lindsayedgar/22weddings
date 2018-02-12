@@ -8,26 +8,14 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.info = null;
     this.styles = {
       underlineStyle: {
         borderColor: '#F26B4D'
       }
     };
     this.state = {
-      content: {
-        '3IsXIg0cVy68kKaOoOQYsO': {
-          title: null,
-          text: null
-        },
-        '1HyLoi3scA46sqKwm2KU4I': {
-          title: null,
-          text: null
-        },
-        '7rBv2VPOeWMOeCmoSAmGuG': {
-          title: null,
-          text: null
-        }
-      }
+      content: null
     };
   }
 
@@ -35,7 +23,20 @@ class Home extends React.Component {
     this.getContent();
   }
 
+  componentDidMount() {
+    this.handleAnchor();
+  }
+
+  componentDidUpdate() {
+    this.handleAnchor();
+  }
+
   render() {
+    const content = this.info || this.state.content;
+    const about = content && content.filter((item) => { return item.sys.id === '3IsXIg0cVy68kKaOoOQYsO' });
+    const services = content && content.filter((item) => { return item.sys.id === '1HyLoi3scA46sqKwm2KU4I' });
+    const testimonials = content && content.filter((item) => { return item.sys.id === '7rBv2VPOeWMOeCmoSAmGuG' });
+
     return (
       <div className="home">
         <div className="parallax"></div>
@@ -43,19 +44,19 @@ class Home extends React.Component {
           <div className="flex">
             <span id="about" className="anchor"></span>
             <div className="about">
-              <h1>{this.state.content['3IsXIg0cVy68kKaOoOQYsO'].title}</h1>
-              <p>{this.state.content['3IsXIg0cVy68kKaOoOQYsO'].text}</p>
+              <h1>{about && about[0].fields.title}</h1>
+              <p>{about && about[0].fields.description}</p>
             </div>
             <div className="services-home">
-              <h1>{this.state.content['1HyLoi3scA46sqKwm2KU4I'].title}</h1>
-              <p>{this.state.content['1HyLoi3scA46sqKwm2KU4I'].text}</p>
+              <h1>{services && services[0].fields.title}</h1>
+              <p>{services && services[0].fields.description}</p>
             </div>
           </div>
           <div className="contact">
             <div className="flex">
               <div className="testimonials">
-                <h1>{this.state.content['7rBv2VPOeWMOeCmoSAmGuG'].title}</h1>
-                <p>{this.state.content['7rBv2VPOeWMOeCmoSAmGuG'].text}</p>
+                <h1>{testimonials && testimonials[0].fields.title}</h1>
+                <p>{testimonials && testimonials[0].fields.description}</p>
               </div>
               <div className="form">
                 <p>Contact</p>
@@ -96,23 +97,32 @@ class Home extends React.Component {
   }
 
   getContent = () => {
+    if (window.localStorage.content) {
+      const content = JSON.parse(window.localStorage.content);
+      this.info = content.filter((entry) => {
+        return entry.sys.contentType.sys.id === 'info';
+      });
+      return;
+    }
+
     http.get(constants.routes.GET_CONTENT)
       .then((results) => {
-        let stateObj = this.getContentState();
-        results.items.map((entry) => {
-          if (Object.keys(stateObj).indexOf(entry.sys.id) !== -1) {
-            stateObj[entry.sys.id].title = entry.fields.title;
-            stateObj[entry.sys.id].text = entry.fields.description;
-          }
+        window.localStorage.setItem('content', JSON.stringify(results.items));
+        const info = results.items.filter((entry) => {
+          return entry.sys.contentType.sys.id === 'info';
         });
         this.setState({
-          content: stateObj
+          content: info
         });
       });
   }
 
-  getContentState = () => {
-    return Object.assign({}, this.state.content);
+  handleAnchor() {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      element.scrollIntoView(true);
+    }
   }
 
   submitForm = (e) => {
