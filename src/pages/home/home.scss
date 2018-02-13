@@ -38,6 +38,25 @@
   .services-home {
     background: #58C3A2;
     flex: 1;
+
+    button {
+      border: 2px solid white !important;
+      background: transparent !important;
+      color: white !important;
+      float: right !important;
+      margin: 5% 0 0 0 !important;
+
+      div > span {
+        vertical-align: inherit !important;
+        font-size: inherit !important;
+      }
+    }
+    button:hover {
+      border: 2px solid transparent !important;
+      background: white !important;
+      color: #58C3A2 !important;
+      float: right !important;
+    }
   }
 
   .contact {
@@ -50,7 +69,7 @@
         float: right;
       }
 
-      .input {
+      .input, .input > div {
         width: 100% !important;
       }
     }
@@ -59,6 +78,25 @@
       flex: 1;
       background: #EC407A;
       box-sizing: border-box;
+
+      button {
+        border: 2px solid white !important;
+        background: transparent !important;
+        color: white !important;
+        float: right !important;
+        margin: 5% 0 0 0 !important;
+
+        div > span {
+          vertical-align: inherit !important;
+          font-size: inherit !important;
+        }
+      }
+      button:hover {
+        border: 2px solid transparent !important;
+        background: white !important;
+        color: #EC407A !important;
+        float: right !important;
+      }
     }
   }
 }
@@ -71,11 +109,21 @@
 
     .about, .services-home {
       flex: auto;
+
+      button {
+        margin: 5% 0 5% 0 !important;
+      }
     }
 
     .contact {
       .form, .testimonials {
         flex: auto;
+      }
+
+      .testimonials {
+        button {
+          margin: 5% 0 5% 0 !important;
+        }
       }
     }
   }

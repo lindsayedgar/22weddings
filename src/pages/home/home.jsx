@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { TextField, FlatButton } from 'material-ui';
+import { TextField, FlatButton, DatePicker } from 'material-ui';
 import http from '../../actions/http';
 
 class Home extends React.Component {
@@ -11,7 +11,7 @@ class Home extends React.Component {
     this.info = null;
     this.styles = {
       underlineStyle: {
-        borderColor: '#F26B4D'
+        borderColor: 'rgb(0, 188, 212)'
       }
     };
     this.state = {
@@ -50,6 +50,7 @@ class Home extends React.Component {
             <div className="services-home">
               <h1>{services && services[0].fields.title}</h1>
               <p>{services && services[0].fields.description}</p>
+              <FlatButton label="View Services" onClick={() => { this.goToUrl('/services/#services') }} />
             </div>
           </div>
           <div className="contact">
@@ -57,6 +58,7 @@ class Home extends React.Component {
               <div className="testimonials">
                 <h1>{testimonials && testimonials[0].fields.title}</h1>
                 <p>{testimonials && testimonials[0].fields.description}</p>
+                <FlatButton label="View Testimonials" onClick={() => { this.goToUrl('/services/#testimonials') }} />
               </div>
               <div className="form">
                 <p>Contact</p>
@@ -72,6 +74,19 @@ class Home extends React.Component {
                     className="input"
                     hintText="Email"
                     underlineFocusStyle={this.styles.underlineStyle}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    className="input"
+                    hintText="Event Type"
+                    underlineFocusStyle={this.styles.underlineStyle}
+                  />
+                  <br />
+                  <DatePicker
+                    className="input"
+                    hintText="Select Date"
+                    container="inline"
                     required
                   />
                   <br />
@@ -123,6 +138,10 @@ class Home extends React.Component {
       const element = document.querySelector(hash);
       element.scrollIntoView(true);
     }
+  }
+
+  goToUrl(path) {
+    window.location.href = `${window.location.origin}${path}`;
   }
 
   submitForm = (e) => {
