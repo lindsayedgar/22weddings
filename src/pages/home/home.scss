@@ -11,9 +11,14 @@
     position: relative;
   }
 
-  .flex {
-    width: 100%;
+  .row-flex {
     display: flex;
+  }
+
+  .about, .services-home, .testimonials, .form {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
   }
 
   .about, .services-home, .testimonials {
@@ -32,12 +37,10 @@
 
   .about {
     background: #F26B4D;
-    flex: 1;
   }
 
   .services-home {
     background: #58C3A2;
-    flex: 1;
 
     button {
       border: 2px solid white !important;
@@ -59,44 +62,40 @@
     }
   }
 
-  .contact {
-    .form {
-      box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
-      padding: 5%;
-      flex: 1;
+  .form {
+    box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
+    padding: 5%;
 
-      button {
-        float: right;
-      }
-
-      .input, .input > div {
-        width: 100% !important;
-      }
+    button {
+      float: right;
+      margin: 5% 0 !important;
     }
 
-    .testimonials {
-      flex: 1;
-      background: #EC407A;
-      box-sizing: border-box;
+    .input, .input > div {
+      width: 100% !important;
+    }
+  }
 
-      button {
-        border: 2px solid white !important;
-        background: transparent !important;
-        color: white !important;
-        float: right !important;
-        margin: 5% 0 0 0 !important;
+  .testimonials {
+    background: #EC407A;
 
-        div > span {
-          vertical-align: inherit !important;
-          font-size: inherit !important;
-        }
+    button {
+      border: 2px solid white !important;
+      background: transparent !important;
+      color: white !important;
+      float: right !important;
+      margin: 5% 0 0 0 !important;
+
+      div > span {
+        vertical-align: inherit !important;
+        font-size: inherit !important;
       }
-      button:hover {
-        border: 2px solid transparent !important;
-        background: white !important;
-        color: #EC407A !important;
-        float: right !important;
-      }
+    }
+    button:hover {
+      border: 2px solid transparent !important;
+      background: white !important;
+      color: #EC407A !important;
+      float: right !important;
     }
   }
 }
@@ -107,8 +106,12 @@
       flex-wrap: wrap;
     }
 
-    .about, .services-home {
-      flex: auto;
+    .row-flex {
+      display: block;
+    }
+
+    .about, .services-home, .testimonials, .form {
+      width: 100%;
 
       button {
         margin: 5% 0 5% 0 !important;
