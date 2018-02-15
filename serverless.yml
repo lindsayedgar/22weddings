@@ -49,19 +49,6 @@ package:
     - lib/**
 
 functions:
-  # sendEmail:
-  #   name: ${self:service}-sendEmail
-  #   description: Sends an email from the site
-  #   handler: src/lambda/handler.sendEmail
-  #   environment:
-  #     MAILGUN_DOMAIN: ${env:MAILGUN_DOMAIN}
-  #     MAILGUN_KEY: ${env:MAILGUN_KEY}
-  #     SEND_TO: ${env:SEND_TO}
-  #   events:
-  #     - http:
-  #         path: /sendEmail
-  #         method: post
-  #         cors: ${self:custom.corsConfig}
   getContent:
     name: ${self:service}-getEntries
     description: Retrieves entries from Contentful
@@ -73,4 +60,17 @@ functions:
       - http:
           path: /content/getEntries
           method: get
+          cors: ${self:custom.corsConfig}
+  sendEmail:
+    name: ${self:service}-sendEmail
+    description: Sends an email from the site
+    handler: src/lambda/handler.sendEmail
+    environment:
+      MAILGUN_DOMAIN: ${env:MAILGUN_DOMAIN}
+      MAILGUN_KEY: ${env:MAILGUN_KEY}
+      SEND_TO: ${env:SEND_TO}
+    events:
+      - http:
+          path: /sendEmail
+          method: post
           cors: ${self:custom.corsConfig}
