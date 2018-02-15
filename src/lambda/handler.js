@@ -1,15 +1,12 @@
 'use strict';
 
-const contentful = require('contentful');
-const mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
-const uuidv4 = require('uuid/v4');
-
-const client = contentful.createClient({
-  space: process.env.CONTENT_SPACE,
-  accessToken: process.env.CONTENT_TOKEN
-});
-
 module.exports.getEntries = (event, context, callback) => {
+  const contentful = require('contentful');
+  const client = contentful.createClient({
+    space: process.env.CONTENT_SPACE,
+    accessToken: process.env.CONTENT_TOKEN
+  });
+
   console.log(`starting getContent: event: ${JSON.stringify(event)}, context: ${JSON.stringify(context)}`);
   return client.getEntries()
     .then((entries) => {
@@ -22,6 +19,9 @@ module.exports.getEntries = (event, context, callback) => {
 };
 
 module.exports.sendEmail = (event, context, callback) => {
+  const mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
+  const uuidv4 = require('uuid/v4');
+
   console.log(`starting sendEmail: event: ${JSON.stringify(event)}, context: ${JSON.stringify(context)}`);
   const body = JSON.parse(event.body);
   const data = {

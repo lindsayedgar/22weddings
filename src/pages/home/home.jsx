@@ -210,7 +210,6 @@ class Home extends React.Component {
   }
 
   sendEmail = (e) => {
-    debugger;
     http.post(`${constants.API_BASE}sendEmail`, {
       name: e.target[0].value,
       email: e.target[1].value,
@@ -224,7 +223,7 @@ class Home extends React.Component {
   submitForm = (e) => {
     e.preventDefault();
     this.sendEmail(e);
-    this.clearForm(e);
+    // this.clearForm(e);
   }
 }
 
