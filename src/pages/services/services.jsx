@@ -78,7 +78,7 @@ class Services extends React.Component {
       return;
     }
 
-    http.get(constants.routes.GET_CONTENT)
+    http.get(`${constants.API_BASE}content/getEntries`)
       .then((results) => {
         this.setState({
           content: results.items

@@ -1,5 +1,3 @@
 {
-  "routes": {
-    "GET_CONTENT": "https://vendnqnnw7.execute-api.us-east-2.amazonaws.com/prod/content/getEntries"
-  }
+  "API_BASE": "https://vendnqnnw7.execute-api.us-east-2.amazonaws.com/prod/"
 }

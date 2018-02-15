@@ -42,7 +42,7 @@ module.exports.sendEmail = (event, context, callback) => {
   });
 };
 
-getApiResponse(body) {
+function getApiResponse(body) {
   return {
     statusCode: 200,
     headers: {

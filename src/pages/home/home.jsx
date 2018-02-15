@@ -158,7 +158,7 @@ class Home extends React.Component {
       return;
     }
 
-    http.get(constants.routes.GET_CONTENT)
+    http.get(`${constants.API_BASE}content/getEntries`)
       .then((results) => {
         window.localStorage.setItem('content', JSON.stringify(results.items));
         const info = results.items.filter((entry) => {
@@ -209,9 +209,22 @@ class Home extends React.Component {
     });
   }
 
+  sendEmail = (e) => {
+    debugger;
+    http.post(`${constants.API_BASE}sendEmail`, {
+      name: e.target[0].value,
+      email: e.target[1].value,
+      message: e.target[5].value
+    })
+    .then((results) => {
+      console.log(results);
+    });
+  }
+
   submitForm = (e) => {
     e.preventDefault();
-    console.log('testing form');
+    this.sendEmail(e);
+    this.clearForm(e);
   }
 }
 
