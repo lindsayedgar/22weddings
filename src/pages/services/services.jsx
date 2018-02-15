@@ -57,8 +57,12 @@ class Services extends React.Component {
             testimonials && testimonials.map((testimonial, key) => {
               const url = testimonial.fields.reference.fields.image.fields.file.url;
               return (
-                <div key={key}>
-                  <img src={`https:${url}`} />
+                <div className="testimonial" key={key}>
+                  <div className="padded-container">
+                    <div className="padded-container__box">
+                      <img src={`https:${url}`} />
+                    </div>
+                  </div>
                   <div className="review">
                     <h3>{testimonial.fields.title}</h3>
                     <p>{testimonial.fields.description}</p>

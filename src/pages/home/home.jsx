@@ -223,7 +223,7 @@ class Home extends React.Component {
   submitForm = (e) => {
     e.preventDefault();
     this.sendEmail(e);
-    // this.clearForm(e);
+    this.clearForm(e);
   }
 }
 
