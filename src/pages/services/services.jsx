@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import http from '../../actions/http';
+import content from '../../actions/content';
 
 class Services extends React.Component {
   constructor(props) {
@@ -82,10 +82,10 @@ class Services extends React.Component {
       return;
     }
 
-    http.get(`${constants.API_BASE}content/getEntries`)
-      .then((results) => {
+    content.getContent()
+      .then((res) => {
         this.setState({
-          content: results.items
+          content: res
         });
       });
   }

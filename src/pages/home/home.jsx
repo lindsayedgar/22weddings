@@ -4,6 +4,7 @@ import React from 'react';
 import { TextField, FlatButton, DatePicker } from 'material-ui';
 import areIntlLocalesSupported from 'intl-locales-supported';
 import http from '../../actions/http';
+import content from '../../actions/content';
 
 let DateTimeFormat;
 // Use the native Intl.DateTimeFormat if available, or a polyfill if not.
@@ -158,10 +159,9 @@ class Home extends React.Component {
       return;
     }
 
-    http.get(`${constants.API_BASE}content/getEntries`)
-      .then((results) => {
-        window.localStorage.setItem('content', JSON.stringify(results.items));
-        const info = results.items.filter((entry) => {
+    content.getContent()
+      .then((res) => {
+        const info = res.filter((entry) => {
           return entry.sys.contentType.sys.id === 'info';
         });
         this.setState({
