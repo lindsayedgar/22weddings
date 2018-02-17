@@ -21,7 +21,7 @@
       margin: 4% 0;
 
       .padded-container {
-        width: 5%;
+        width: 3%;
         display: inline-block;
 
         &__box {
@@ -41,7 +41,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            border-radius: 10%;
+            border-radius: 100%;
           }
         }
       }
@@ -51,7 +51,7 @@
         display: inline-block;
         vertical-align: top;
         margin: 0;
-        padding: 0 5%;
+        padding: 0 2%;
         box-sizing: border-box;
 
         h3 {

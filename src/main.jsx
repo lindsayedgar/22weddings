@@ -1,6 +1,7 @@
 'use strict'
 
 import './styles/main.scss';
+import favicon from './favicon.ico';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
