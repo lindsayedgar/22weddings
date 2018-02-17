@@ -1,5 +1,7 @@
 'use strict';
 
+const crypto = require('crypto');
+
 module.exports.getEntries = (event, context, callback) => {
   const contentful = require('contentful');
   const client = contentful.createClient({
@@ -11,6 +13,10 @@ module.exports.getEntries = (event, context, callback) => {
   return client.getEntries()
     .then((entries) => {
       const response = getApiResponse(entries);
+      console.log('Entries:', entries);
+      const etag = crypto.createHash('md5').update(JSON.stringify(entries)).digest("hex");
+      console.log('Etag:', etag);
+      response.headers.ETag = etag;
       callback(null, response);
     })
     .catch((error) => {
