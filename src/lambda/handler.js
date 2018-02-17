@@ -13,10 +13,11 @@ module.exports.getEntries = (event, context, callback) => {
   return client.getEntries()
     .then((entries) => {
       const response = getApiResponse(entries);
-      console.log('Entries:', entries);
+      console.log('Entries:', JSON.stringify(entries));
       const etag = crypto.createHash('md5').update(JSON.stringify(entries)).digest("hex");
-      console.log('Etag:', etag);
+      console.log('ETag:', etag);
       response.headers.ETag = etag;
+      response.headers['Cache-Control'] = 'max-age=691200';
       callback(null, response);
     })
     .catch((error) => {
