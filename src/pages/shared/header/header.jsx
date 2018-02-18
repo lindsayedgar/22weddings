@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Drawer, MenuItem, IconButton } from 'material-ui';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import { grey700 } from 'material-ui/styles/colors';
@@ -30,11 +31,11 @@ class Header extends React.Component {
           onRequestChange={(open) => this.setState({open})}
           openSecondary={true}
         >
-          <MenuItem onClick={() => (this.handleClose('/'))}>Home</MenuItem>
-          <MenuItem onClick={() => (this.handleClose('/#about'))}>About Me</MenuItem>
-          <MenuItem onClick={() => (this.handleClose('/services/#services'))}>Services</MenuItem>
-          <MenuItem onClick={() => (this.handleClose('/services/#testimonials'))}>Testimonials</MenuItem>
-          <MenuItem onClick={() => (this.handleClose('/#contact'))}>Contact</MenuItem>
+          <Link to="/"><MenuItem onClick={this.handleClose}>Home</MenuItem></Link>
+          <Link to="/#about"><MenuItem onClick={this.handleClose}>About Me</MenuItem></Link>
+          <Link to="/services/#services"><MenuItem onClick={this.handleClose}>Services</MenuItem></Link>
+          <Link to="/services/#testimonials"><MenuItem onClick={this.handleClose}>Testimonials</MenuItem></Link>
+          <Link to="/#contact"><MenuItem onClick={this.handleClose}>Contact</MenuItem></Link>
         </Drawer>
       </div>
     )
@@ -50,7 +51,6 @@ class Header extends React.Component {
     this.setState({
       open: false
     });
-    window.location.href = `${window.location.origin}${route}`;
   }
 }
 
