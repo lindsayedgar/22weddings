@@ -1,0 +1,25 @@
+.about-page {
+  margin-top: 89px;
+  padding: 5% 10%;
+
+  .content {
+    &__image {
+      width: 50%;
+      display: inline-block;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__text {
+      width: 50%;
+      display: inline-block;
+      vertical-align: top;
+
+      p {
+        margin: 0 5%;
+      }
+    }
+  }
+}

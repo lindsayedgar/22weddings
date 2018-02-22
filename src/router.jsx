@@ -6,12 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Header from './pages/shared/header/header.jsx';
 import Home from './pages/home/home.jsx';
+import About from './pages/about/about.jsx';
 import Services from './pages/services/services.jsx';
-
-const routeChange = () => {
-  console.log('testing');
-  return null;
-}
 
 class AppRouter extends React.Component {
   constructor(props) {
@@ -25,6 +21,7 @@ class AppRouter extends React.Component {
           <Header />
           <Switch>
             <Route exact={true} path='/' component={Home} />
+            <Route path='/about' component={About} />
             <Route path='/services' component={Services} />
           </Switch>
         </React.Fragment>
