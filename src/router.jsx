@@ -4,10 +4,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import Header from './pages/shared/header/header.jsx';
 import Home from './pages/home/home.jsx';
 import About from './pages/about/about.jsx';
 import Services from './pages/services/services.jsx';
+
+const toTop = () => {
+  window.scroll(0, 0);
+  return null;
+}
 
 class AppRouter extends React.Component {
   constructor(props) {
@@ -18,12 +22,12 @@ class AppRouter extends React.Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Header />
           <Switch>
             <Route exact={true} path='/' component={Home} />
             <Route path='/about' component={About} />
             <Route path='/services' component={Services} />
           </Switch>
+          <Route path='/' component={toTop} />
         </React.Fragment>
       </BrowserRouter>
     );

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Header from '../shared/header/header.jsx';
 import content from '../../actions/content';
 
 class Services extends React.Component {
@@ -35,44 +36,47 @@ class Services extends React.Component {
     });
 
     return (
-      <div className="services">
-        <section className="service-list">
-          <span id="services" className="anchor"></span>
-          <h1>Services</h1>
-          {
-            services && services.map((service, key) => {
-              return (
-                <div key={key}>
-                  <h3>{service.fields.title}</h3>
-                  <p>{service.fields.description}</p>
-                </div>
-              )
-            })
-          }
-        </section>
-        <span id="testimonials" className="anchor"></span>
-        <section className="testimonial-list">
-          <h1>Testimonials</h1>
-          {
-            testimonials && testimonials.map((testimonial, key) => {
-              const url = testimonial.fields.reference.fields.image.fields.file.url;
-              return (
-                <div className="testimonial" key={key}>
-                  <div className="padded-container">
-                    <div className="padded-container__box">
-                      <img src={`https:${url}`} />
+      <React.Fragment>
+        <Header />
+        <div className="services">
+          <section className="service-list">
+            <span id="services" className="anchor"></span>
+            <h1>Services</h1>
+            {
+              services && services.map((service, key) => {
+                return (
+                  <div key={key}>
+                    <h3>{service.fields.title}</h3>
+                    <p>{service.fields.description}</p>
+                  </div>
+                )
+              })
+            }
+          </section>
+          <span id="testimonials" className="anchor"></span>
+          <section className="testimonial-list">
+            <h1>Testimonials</h1>
+            {
+              testimonials && testimonials.map((testimonial, key) => {
+                const url = testimonial.fields.reference.fields.image.fields.file.url;
+                return (
+                  <div className="testimonial" key={key}>
+                    <div className="padded-container">
+                      <div className="padded-container__box">
+                        <img src={`https:${url}`} />
+                      </div>
+                    </div>
+                    <div className="review">
+                      <h3>{testimonial.fields.title}</h3>
+                      <p>{testimonial.fields.description}</p>
                     </div>
                   </div>
-                  <div className="review">
-                    <h3>{testimonial.fields.title}</h3>
-                    <p>{testimonial.fields.description}</p>
-                  </div>
-                </div>
-              )
-            })
-          }
-        </section>
-      </div>
+                )
+              })
+            }
+          </section>
+        </div>
+      </React.Fragment>
     )
   }
 

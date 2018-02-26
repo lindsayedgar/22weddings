@@ -11,14 +11,29 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
+    this.none = false;
     this.state = {
       open: false
     }
   }
 
+  componentWillMount() {
+    if (this.props.page === 'home') {
+      this.none = 'none';
+      window.onscroll = () => {this.stickyStyle()};
+    } else {
+      window.onscroll = () => {};
+    }
+  }
+
+  componentDidMount() {
+    const header = document.getElementById("header");
+    header.classList.remove("sticky");
+  }
+
   render() {
     return (
-      <div className="header">
+      <div id="header" className={`header ${this.none}`}>
         <img className="logo" src={Logo} />
         <IconButton
           onClick={this.handleToggle}>
@@ -39,6 +54,20 @@ class Header extends React.Component {
         </Drawer>
       </div>
     )
+  }
+
+  stickyStyle = () => {
+    const header = document.getElementById("header");
+
+    if (this.props.page === 'home') {
+      if (window.pageYOffset >= 200) {
+        header.classList.add("sticky");
+        header.classList.remove("none");
+      } else {
+        header.classList.remove("sticky");
+        header.classList.add("none");
+      }
+    }
   }
 
   handleToggle = () => {

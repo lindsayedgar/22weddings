@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Header from '../shared/header/header.jsx';
 import content from '../../actions/content';
 
 class About extends React.Component {
@@ -32,22 +33,25 @@ class About extends React.Component {
     });
 
     return (
-      <div className="about-page">
-        {about && about.map((about, key) => {
-          const url = about.fields.reference.fields.image.fields.file.url;
-          return (
-            <div key={key} className="content">
-              <h1>{about.fields.title}</h1>
-              <div className="content__image">
-                <img src={`https:${url}`} />
+      <React.Fragment>
+        <Header />
+        <div className="about-page">
+          {about && about.map((about, key) => {
+            const url = about.fields.reference.fields.image.fields.file.url;
+            return (
+              <div key={key} className="content">
+                <h1>{about.fields.title}</h1>
+                <div className="content__image">
+                  <img src={`https:${url}`} />
+                </div>
+                <div className="content__text">
+                  <p>{about.fields.description}</p>
+                </div>
               </div>
-              <div className="content__text">
-                <p>{about.fields.description}</p>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      </React.Fragment>
     )
   }
 

@@ -3,6 +3,7 @@
 import React from 'react';
 import { TextField, FlatButton, DatePicker } from 'material-ui';
 import areIntlLocalesSupported from 'intl-locales-supported';
+import Header from '../shared/header/header.jsx';
 import http from '../../actions/http';
 import content from '../../actions/content';
 
@@ -58,95 +59,98 @@ class Home extends React.Component {
     const testimonials = content && content.filter((item) => { return item.sys.id === '7rBv2VPOeWMOeCmoSAmGuG' });
 
     return (
-      <div className="home">
-        <div className="parallax"></div>
-        <div className="content">
-          <div className="row-flex">
-            <span id="about" className="anchor"></span>
-            <div className="about">
-              <h1>{about && about[0].fields.title}</h1>
-              <p>{about && about[0].fields.description}</p>
+      <React.Fragment>
+        <Header page="home" />
+        <div className="home">
+          <div className="parallax"></div>
+          <div className="content">
+            <div className="row-flex">
+              <span id="about" className="anchor"></span>
+              <div className="about">
+                <h1>{about && about[0].fields.title}</h1>
+                <p>{about && about[0].fields.description}</p>
+              </div>
+              <div className="services-home">
+                <h1>{services && services[0].fields.title}</h1>
+                <p>{services && services[0].fields.description}</p>
+                <FlatButton label="View Services" onClick={() => { this.goToUrl('/services/#services') }} />
+              </div>
             </div>
-            <div className="services-home">
-              <h1>{services && services[0].fields.title}</h1>
-              <p>{services && services[0].fields.description}</p>
-              <FlatButton label="View Services" onClick={() => { this.goToUrl('/services/#services') }} />
-            </div>
-          </div>
-          <div className="row-flex">
-            <div className="testimonials">
-              <h1>{testimonials && testimonials[0].fields.title}</h1>
-              <p>{testimonials && testimonials[0].fields.description}</p>
-              <FlatButton label="View Testimonials" onClick={() => { this.goToUrl('/services/#testimonials') }} />
-            </div>
-            <div className="form">
-              <p>Contact</p>
-              <form onSubmit={this.submitForm}>
-                <TextField
-                  className="input"
-                  name="name"
-                  hintText="Name"
-                  underlineFocusStyle={this.styles.underlineStyle}
-                  value={this.state.form.name}
-                  onChange={this.handleFormChange}
-                  required
-                />
-                <br />
-                <TextField
-                  className="input"
-                  name="email"
-                  hintText="Email"
-                  underlineFocusStyle={this.styles.underlineStyle}
-                  value={this.state.form.email}
-                  onChange={this.handleFormChange}
-                  required
-                />
-                <br />
-                <TextField
-                  className="input"
-                  name="event"
-                  hintText="Event Type (e.g. Wedding)"
-                  underlineFocusStyle={this.styles.underlineStyle}
-                  value={this.state.form.event}
-                  onChange={this.handleFormChange}
-                  required
-                />
-                <br />
-                <DatePicker
-                  className="input"
-                  name="date"
-                  hintText="Select Date"
-                  container="inline"
-                  formatDate={new DateTimeFormat('en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  }).format}
-                  value={this.state.form.date}
-                  onChange={this.handleDateChange}
-                  required
-                />
-                <br />
-                <TextField
-                  className="input"
-                  name="message"
-                  hintText="Message"
-                  multiLine={true}
-                  rows={1}
-                  rowsMax={10}
-                  underlineFocusStyle={this.styles.underlineStyle}
-                  value={this.state.form.message}
-                  onChange={this.handleFormChange}
-                  required
-                />
-                <br />
-                <FlatButton label="Submit" type="Submit" />
-              </form>
-              <span id="contact" className="anchor"></span>
+            <div className="row-flex">
+              <div className="testimonials">
+                <h1>{testimonials && testimonials[0].fields.title}</h1>
+                <p>{testimonials && testimonials[0].fields.description}</p>
+                <FlatButton label="View Testimonials" onClick={() => { this.goToUrl('/services/#testimonials') }} />
+              </div>
+              <div className="form">
+                <p>Contact</p>
+                <form onSubmit={this.submitForm}>
+                  <TextField
+                    className="input"
+                    name="name"
+                    hintText="Name"
+                    underlineFocusStyle={this.styles.underlineStyle}
+                    value={this.state.form.name}
+                    onChange={this.handleFormChange}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    className="input"
+                    name="email"
+                    hintText="Email"
+                    underlineFocusStyle={this.styles.underlineStyle}
+                    value={this.state.form.email}
+                    onChange={this.handleFormChange}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    className="input"
+                    name="event"
+                    hintText="Event Type (e.g. Wedding)"
+                    underlineFocusStyle={this.styles.underlineStyle}
+                    value={this.state.form.event}
+                    onChange={this.handleFormChange}
+                    required
+                  />
+                  <br />
+                  <DatePicker
+                    className="input"
+                    name="date"
+                    hintText="Select Date"
+                    container="inline"
+                    formatDate={new DateTimeFormat('en-US', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    }).format}
+                    value={this.state.form.date}
+                    onChange={this.handleDateChange}
+                    required
+                  />
+                  <br />
+                  <TextField
+                    className="input"
+                    name="message"
+                    hintText="Message"
+                    multiLine={true}
+                    rows={1}
+                    rowsMax={10}
+                    underlineFocusStyle={this.styles.underlineStyle}
+                    value={this.state.form.message}
+                    onChange={this.handleFormChange}
+                    required
+                  />
+                  <br />
+                  <FlatButton label="Submit" type="Submit" />
+                </form>
+                <span id="contact" className="anchor"></span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 
