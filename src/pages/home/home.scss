@@ -86,6 +86,10 @@
   }
 
   .carousel {
+    .slider-frame {
+      max-height: 90vh;
+    }
+
     .slider-decorator-0, .slider-decorator-1 {
       display: none;
     }
@@ -93,6 +97,8 @@
     .slider-decorator-2 {
       li > button {
         color: white !important;
+        text-shadow: 0px 0px 2px #000000;
+        font-size: 32px !important;
       }
     }
   }
@@ -131,6 +137,10 @@
     }
 
     .carousel {
+      .slider-frame {
+        max-height: none;
+      }
+
       margin-top: 50px;
     }
   }
