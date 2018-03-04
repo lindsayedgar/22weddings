@@ -8,6 +8,10 @@ h1, h2, h3, h4, h5, p, li, a {
   color: #616161;
 }
 
+h1 {
+  font-size: 32px;
+}
+
 p {
   font-size: 20px;
 }
@@ -21,4 +25,14 @@ a {
   height: 89px; /*same height as header*/
   margin-top: -89px; /*same height as header*/
   visibility: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
