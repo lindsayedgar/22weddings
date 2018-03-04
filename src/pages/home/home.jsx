@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { TextField, FlatButton, DatePicker } from 'material-ui';
+import { TextField, FlatButton, DatePicker, Divider } from 'material-ui';
+import Carousel from 'nuka-carousel';
 import areIntlLocalesSupported from 'intl-locales-supported';
 import Header from '../shared/header/header.jsx';
 import http from '../../actions/http';
@@ -64,24 +65,55 @@ class Home extends React.Component {
         <div className="home">
           <div className="parallax"></div>
           <div className="content">
-            <div className="row-flex">
-              <span id="about" className="anchor"></span>
-              <div className="about">
-                <h1>{about && about[0].fields.title}</h1>
-                <p>{about && about[0].fields.description}</p>
-              </div>
-              <div className="services-home">
-                <h1>{services && services[0].fields.title}</h1>
-                <p>{services && services[0].fields.description}</p>
-                <FlatButton label="View Services" onClick={() => { this.goToUrl('/services/#services') }} />
-              </div>
+            <div className="summary">
+              {
+                [about, services, testimonials].map((item, index) => {
+                  let color;
+                  switch (index) {
+                    case 1:
+                      color = '#F26B4D';
+                      break;
+                    case 2:
+                      color = '#58C3A2';
+                      break;
+                    default:
+                      color = '#616161';
+                      break;
+                  }
+                  const labels = ['hire me!', 'see services', 'see testimonials'];
+                  const urls = ['/about', '/services/#services', '/services/#testimonials'];
+
+                  return (
+                    <div key={index} className="panel">
+                      <h1 style={{color: color}}>{item[0].fields.title}</h1>
+                      <p>{item[0].fields.description}</p>
+                      <div>
+                        <FlatButton
+                          label={labels[index]}
+                          style={{
+                            borderColor: color,
+                            borderStyle: 'solid',
+                            borderWidth: '2px'
+                          }}
+                          labelStyle={{color: color}}
+                          hoverColor={color}
+                          onClick={() => { this.goToUrl(urls[index]) }} />
+                      </div>
+                      <Divider className="divider" alt={index} />
+                    </div>
+                  )
+                })
+              }
             </div>
-            <div className="row-flex">
-              <div className="testimonials">
-                <h1>{testimonials && testimonials[0].fields.title}</h1>
-                <p>{testimonials && testimonials[0].fields.description}</p>
-                <FlatButton label="View Testimonials" onClick={() => { this.goToUrl('/services/#testimonials') }} />
-              </div>
+            <div className="carousel">
+              <Carousel>
+                <img src="https://assets.marthastewartweddings.com/styles/wmax-1500/d52/regan-colin-wedding-ceremony-aisle-2655-6271213-0217/regan-colin-wedding-ceremony-aisle-2655-6271213-0217_horiz.jpg?itok=ytRs8asx" />
+                <img src="https://www.snowbird.com/uploaded/GROUPS/Weddings_Gina_Sean_0855.jpg" />
+                <img src="https://img1.southernliving.timeinc.net/sites/default/files/styles/story_card_two_thirds/public/image/2017/06/main/autumn-charleston-wedding-jophoto-kn5a9998.jpg?itok=A8gDXji4" />
+              </Carousel>
+            </div>
+            <div className="contact">
+              <h1>Send me a message & get in touch!</h1>
               <div className="form">
                 <p>Contact</p>
                 <form onSubmit={this.submitForm}>
@@ -108,7 +140,7 @@ class Home extends React.Component {
                   <TextField
                     className="input"
                     name="event"
-                    hintText="Event Type (e.g. Wedding)"
+                    hintText="Event Type"
                     underlineFocusStyle={this.styles.underlineStyle}
                     value={this.state.form.event}
                     onChange={this.handleFormChange}
@@ -148,6 +180,7 @@ class Home extends React.Component {
                 <span id="contact" className="anchor"></span>
               </div>
             </div>
+
           </div>
         </div>
       </React.Fragment>

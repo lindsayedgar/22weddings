@@ -3,7 +3,7 @@
 
   .parallax {
     height: 100vh;
-    background-image: url('https://res.cloudinary.com/da94i5ynn/image/upload/c_fill,h_1366,l_download_wsly35,o_65,w_2048/c_scale,g_center,l_logo_overlay_filled_eepoic,w_800/v1519655434/wedding_cover_arizji.jpg');
+    background-image: url('https://res.cloudinary.com/da94i5ynn/image/upload/c_scale,h_1366,l_download_wsly35,o_40,w_2048/c_scale,l_logo_overlay_filled_eepoic,w_800/v1519655434/wedding_cover_arizji.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -15,119 +15,119 @@
     display: flex;
   }
 
-  .about, .services-home, .testimonials, .form {
-    width: 50%;
-    display: inline-block;
-    box-sizing: border-box;
+  .summary {
+    width: 75%;
+    max-width: 1200px;
+    margin: 5% auto;
+    display: flex;
+    justify-content: space-between;
+
+    .panel {
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+
+      > div {
+        flex-grow: 1;
+        position: relative;
+        height: 36px;
+
+        button {
+          position: absolute !important;
+          bottom: 0;
+
+          > div {
+            display: flex !important;
+          }
+        }
+
+        button:hover {
+          > div > span {
+            color: white !important;
+          }
+        }
+      }
+
+      .divider {
+        display: none;
+        margin: 35px 0px 0px !important;
+      }
+    }
   }
 
-  .about, .services-home, .testimonials {
-    padding: 5%;
+  .contact {
+    margin: 5% auto;
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
 
     h1 {
-      margin-top: 0;
-      color: white;
+      color: #58C3A2;
+      font-size: 40px;
     }
 
-    p {
-      color: white;
-      font-weight: bold;
-    }
-  }
+    .form {
+      display: inline-block;
+      box-sizing: border-box;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
+      padding: 5%;
+      width: 50%;
 
-  .about {
-    background: #F26B4D;
-  }
+      button {
+        float: right;
+        margin: 5% 0 !important;
+      }
 
-  .services-home {
-    background: #58C3A2;
-
-    button {
-      border: 2px solid white !important;
-      background: transparent !important;
-      color: white !important;
-      float: right !important;
-      margin: 5% 0 0 0 !important;
-
-      div > span {
-        vertical-align: inherit !important;
-        font-size: inherit !important;
+      .input, .input > div {
+        width: 100% !important;
       }
     }
-    button:hover {
-      border: 2px solid transparent !important;
-      background: white !important;
-      color: #58C3A2 !important;
-      float: right !important;
-    }
   }
 
-  .form {
-    box-shadow: rgba(0, 0, 0, 0.32) 0px 1px 6px;
-    padding: 5%;
-
-    button {
-      float: right;
-      margin: 5% 0 !important;
+  .carousel {
+    .slider-decorator-0, .slider-decorator-1 {
+      display: none;
     }
 
-    .input, .input > div {
-      width: 100% !important;
-    }
-  }
-
-  .testimonials {
-    background: #546E7A;
-
-    button {
-      border: 2px solid white !important;
-      background: transparent !important;
-      color: white !important;
-      float: right !important;
-      margin: 5% 0 0 0 !important;
-
-      div > span {
-        vertical-align: inherit !important;
-        font-size: inherit !important;
+    .slider-decorator-2 {
+      li > button {
+        color: white !important;
       }
-    }
-    button:hover {
-      border: 2px solid transparent !important;
-      background: white !important;
-      color: #546E7A !important;
-      float: right !important;
     }
   }
 }
 
 @media screen and (max-width: 600px) {
   .home {
-    .flex {
+    .summary {
+      width: 90%;
       flex-wrap: wrap;
-    }
 
-    .row-flex {
-      display: block;
-    }
+      .panel {
+        width: 100%;
 
-    .about, .services-home, .testimonials, .form {
-      width: 100%;
+        p {
+          margin-top: 0;
+        }
 
-      button {
-        margin: 5% 0 5% 0 !important;
+        hr[alt='0'], hr[alt='1'] {
+          display: block;
+        }
       }
     }
 
     .contact {
-      .form, .testimonials {
-        flex: auto;
-      }
+      width: 90%;
+      flex-wrap: wrap;
 
-      .testimonials {
-        button {
-          margin: 5% 0 5% 0 !important;
-        }
+      .form {
+        width: 100%;
       }
+    }
+
+    .carousel {
+      margin-top: 50px;
     }
   }
 }
