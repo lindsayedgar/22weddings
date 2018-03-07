@@ -1,24 +1,46 @@
 .about-page {
   margin-top: 89px;
-  padding: 5% 10%;
+  padding: 3% 20%;
+
+  > h1 {
+    margin-top: 0;
+    margin-bottom: 5%;
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    text-align: center
+  }
+
+  .content[image-first="false"] {
+    flex-direction: row-reverse;
+  }
 
   .content {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+
     &__image {
-      width: 50%;
+      width: 48%;
       display: inline-block;
 
       img {
         width: 100%;
       }
+
+      span {
+        font-style: italic;
+      }
     }
 
     &__text {
-      width: 50%;
-      display: inline-block;
-      vertical-align: top;
+      width: 48%;
+
+      h3 {
+        margin-top: 0;
+      }
 
       p {
-        margin: 0 5%;
+        margin: 0;
       }
     }
   }
@@ -26,10 +48,27 @@
 
 @media screen and (max-width: 600px) {
   .about-page {
+    padding: 3% 5%;
+
+    h1 {
+      display: none;
+    }
+
     .content {
+      flex-wrap: wrap;
+      flex-direction: column-reverse !important;
+
       &__image, &__text {
         width: 100%;
         display: block;
+
+        p {
+          margin: 5% 0;
+        }
+      }
+
+      h3 {
+        margin-top: 5%;
       }
     }
   }
