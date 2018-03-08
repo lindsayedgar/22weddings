@@ -39,22 +39,39 @@ class Services extends React.Component {
       <React.Fragment>
         <Header />
         <div className="services">
-          <section className="service-list">
-            <span id="services" className="anchor"></span>
-            <h1>Services</h1>
+          <h1>Services we offer</h1>
+          <div className="services__images">
             {
-              services && services.map((service, key) => {
+              [0, 0, 0, 0].map((item, index) => {
                 return (
-                  <div key={key}>
-                    <h3>{service.fields.title}</h3>
-                    <p>{service.fields.description}</p>
+                  <div key={index} className="box">
+                    <div className="box__container">
+                      <img src="https://www.snowbird.com/uploaded/GROUPS/Weddings_Gina_Sean_0855.jpg" />
+                    </div>
                   </div>
                 )
               })
             }
-          </section>
-          <span id="testimonials" className="anchor"></span>
-          <section className="testimonial-list">
+          </div>
+          <div className="services__content">
+            <span id="services" className="anchor"></span>
+            <span id="testimonials" className="anchor"></span>
+            <h2>This is a short description of the services that are offered.. blah blah blah.. put something here you bimbo</h2>
+            <div className="services__content--columns">
+              {
+                services && services.map((service, index) => {
+                  return (
+                    <div key={index} className="services__content--columns--column">
+                      <h2>{service.fields.title}</h2>
+                      <p>{service.fields.description}</p>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+
+          {/* <section className="testimonial-list">
             <h1>Testimonials</h1>
             {
               testimonials && testimonials.map((testimonial, key) => {
@@ -74,7 +91,7 @@ class Services extends React.Component {
                 )
               })
             }
-          </section>
+          </section> */}
         </div>
       </React.Fragment>
     )
