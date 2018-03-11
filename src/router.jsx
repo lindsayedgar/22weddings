@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history';
 import Home from './pages/home/home.jsx';
 import About from './pages/about/about.jsx';
 import Services from './pages/services/services.jsx';
+import Testimonials from './pages/testimonials/testimonials.jsx';
 
 const toTop = () => {
   window.scroll(0, 0);
@@ -26,6 +27,7 @@ class AppRouter extends React.Component {
             <Route exact={true} path='/' component={Home} />
             <Route path='/about' component={About} />
             <Route path='/services' component={Services} />
+            <Route path='/testimonials' component={Testimonials} />
           </Switch>
           <Route path='/' component={toTop} />
         </React.Fragment>

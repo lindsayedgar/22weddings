@@ -18,22 +18,13 @@ class Services extends React.Component {
     this.getContent();
   }
 
-  componentDidMount() {
-    this.handleAnchor();
-  }
-
-  componentDidUpdate() {
-    this.handleAnchor();
-  }
-
   render() {
     const content = this.content || this.state.content;
     const services = content && content.filter((entry) => {
       return entry.sys.contentType.sys.id === 'service';
     });
-    const testimonials = content && content.filter((entry) => {
-      return entry.sys.contentType.sys.id === 'testimonial';
-    });
+    const options = services && services.filter((service) => service.fields.title !== 'Description');
+    const description = services && services.filter((service) => service.fields.title === 'Description');
 
     return (
       <React.Fragment>
@@ -56,10 +47,10 @@ class Services extends React.Component {
           <div className="services__content">
             <span id="services" className="anchor"></span>
             <span id="testimonials" className="anchor"></span>
-            <h2>This is a short description of the services that are offered.. blah blah blah.. put something here you bimbo</h2>
+            <h2>{description && description[0].fields.description}</h2>
             <div className="services__content--columns">
               {
-                services && services.map((service, index) => {
+                options && options.map((service, index) => {
                   return (
                     <div key={index} className="services__content--columns--column">
                       <h2>{service.fields.title}</h2>
@@ -70,28 +61,6 @@ class Services extends React.Component {
               }
             </div>
           </div>
-
-          {/* <section className="testimonial-list">
-            <h1>Testimonials</h1>
-            {
-              testimonials && testimonials.map((testimonial, key) => {
-                const url = testimonial.fields.reference.fields.image.fields.file.url;
-                return (
-                  <div className="testimonial" key={key}>
-                    <div className="padded-container">
-                      <div className="padded-container__box">
-                        <img src={`https:${url}`} />
-                      </div>
-                    </div>
-                    <div className="review">
-                      <h3>{testimonial.fields.title}</h3>
-                      <p>{testimonial.fields.description}</p>
-                    </div>
-                  </div>
-                )
-              })
-            }
-          </section> */}
         </div>
       </React.Fragment>
     )
@@ -109,14 +78,6 @@ class Services extends React.Component {
           content: res
         });
       });
-  }
-
-  handleAnchor() {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      element.scrollIntoView(true);
-    }
   }
 }
 
