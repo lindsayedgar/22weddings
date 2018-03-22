@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from '../shared/header/header.jsx';
+import Footer from '../shared/footer/footer.jsx';
 import content from '../../actions/content';
 
 class Services extends React.Component {
@@ -62,6 +63,7 @@ class Services extends React.Component {
             </div>
           </div>
         </div>
+        <Footer />
       </React.Fragment>
     )
   }

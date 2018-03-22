@@ -1,5 +1,7 @@
 .home {
-  // margin-top: 89px;
+  // margin-top: 7vh;
+  min-height: 92vh;
+  box-sizing: border-box;
 
   .parallax {
     height: 100vh;
@@ -58,12 +60,17 @@
   .contact {
     margin: 5% auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 75%;
 
-    h1 {
-      color: #58C3A2;
-      font-size: 40px;
+    .message {
+      margin-bottom: 5%;
+
+      h1 {
+        color: #58C3A2;
+        font-size: 40px;
+        margin: 0;
+      }
     }
 
     .form {
@@ -85,21 +92,13 @@
     }
   }
 
-  .carousel {
-    .slider-frame {
-      max-height: 90vh;
+  .carousel-slider {
+    .slide {
+      background: white;
     }
 
-    .slider-decorator-0, .slider-decorator-1 {
-      display: none;
-    }
-
-    .slider-decorator-2 {
-      li > button {
-        color: white !important;
-        text-shadow: 0px 0px 2px #000000;
-        font-size: 32px !important;
-      }
+    .control-dots {
+      padding: 0;
     }
   }
 }
@@ -127,8 +126,10 @@
       width: 90%;
       flex-wrap: wrap;
 
-      h1 {
-        font-size: 32px;
+      .message {
+        h1 {
+          font-size: 32px;
+        }
       }
 
       .form {
@@ -136,12 +137,8 @@
       }
     }
 
-    .carousel {
-      .slider-frame {
-        max-height: none;
-      }
-
-      margin-top: 50px;
+    .carousel-slider {
+      margin-top: 50px !important;
     }
   }
 }

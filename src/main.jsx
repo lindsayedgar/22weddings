@@ -1,6 +1,7 @@
 'use strict'
 
 import './styles/main.scss';
+import 'style-loader!css-loader!react-responsive-carousel/lib/styles/carousel.css';
 import favicon from './img/favicon.ico';
 
 import React from 'react';

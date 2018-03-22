@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from '../shared/header/header.jsx';
+import Footer from '../shared/footer/footer.jsx';
 import content from '../../actions/content';
 
 class About extends React.Component {
@@ -56,6 +57,7 @@ class About extends React.Component {
             )
           })}
         </div>
+        <Footer />
       </React.Fragment>
     )
   }

@@ -3,6 +3,10 @@ html, body {
   padding: 0;
 }
 
+#container {
+  position: relative;
+}
+
 h1, h2, h3, h4, h5, p, li, a {
   font-family: 'Open Sans', sans-serif;
   color: #616161;
