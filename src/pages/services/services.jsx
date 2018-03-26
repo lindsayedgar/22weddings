@@ -26,6 +26,9 @@ class Services extends React.Component {
     });
     const options = services && services.filter((service) => service.fields.title !== 'Description');
     const description = services && services.filter((service) => service.fields.title === 'Description');
+    options.sort((a, b) => {
+      return a.fields.position - b.fields.position;
+    });
 
     return (
       <React.Fragment>
