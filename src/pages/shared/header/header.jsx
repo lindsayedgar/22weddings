@@ -35,6 +35,7 @@ class Header extends React.Component {
     return (
       <div id="header" className={`header ${this.none}`}>
         <img className="logo" src={Logo} />
+        <h2>A wedding and event company in Austin, TX (and beyond)</h2>
         <IconButton
           onClick={this.handleToggle}>
           <MenuIcon color={grey700} />
