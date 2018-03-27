@@ -24,8 +24,9 @@ class Services extends React.Component {
     const services = content && content.filter((entry) => {
       return entry.sys.contentType.sys.id === 'service';
     });
-    const options = services && services.filter((service) => service.fields.title !== 'Description');
+    const options = services && services.filter((service) => service.fields.title !== 'Description' && service.fields.title !== 'Images');
     const description = services && services.filter((service) => service.fields.title === 'Description');
+    const images = services && services.filter((service) => service.fields.title === 'Images');
     options.sort((a, b) => {
       return a.fields.position - b.fields.position;
     });
@@ -37,11 +38,11 @@ class Services extends React.Component {
           <h1>Services we offer</h1>
           <div className="services__images">
             {
-              [0, 0, 0, 0].map((item, index) => {
+              images && images[0].fields.images.map((item, index) => {
                 return (
                   <div key={index} className="box">
                     <div className="box__container">
-                      <img src="https://www.snowbird.com/uploaded/GROUPS/Weddings_Gina_Sean_0855.jpg" />
+                      <img src={item.fields.file.url} />
                     </div>
                   </div>
                 )
