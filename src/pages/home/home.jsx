@@ -113,7 +113,7 @@ class Home extends React.Component {
             <div className="carousel">
               <Carousel>
                 {
-                  carousel && carousel[0].fields.images.map((image) => {
+                  carousel.length && carousel[0].fields.images.map((image) => {
                     return (
                       <div>
                         <img src={image.fields.file.url} />
