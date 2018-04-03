@@ -60,6 +60,9 @@ class Home extends React.Component {
     const about = content && content.filter((item) => { return item.sys.id === '3IsXIg0cVy68kKaOoOQYsO' });
     const services = content && content.filter((item) => { return item.sys.id === '1HyLoi3scA46sqKwm2KU4I' });
     const testimonials = content && content.filter((item) => { return item.sys.id === '7rBv2VPOeWMOeCmoSAmGuG' });
+    const carousel = content && content.filter((entry) => {
+      return entry.sys.contentType.sys.id === 'carousel';
+    });
 
     return content && (
       <React.Fragment>
@@ -109,15 +112,15 @@ class Home extends React.Component {
             </div>
             <div className="carousel">
               <Carousel>
-                <div>
-                  <img src="https://assets.marthastewartweddings.com/styles/wmax-1500/d52/regan-colin-wedding-ceremony-aisle-2655-6271213-0217/regan-colin-wedding-ceremony-aisle-2655-6271213-0217_horiz.jpg?itok=ytRs8asx" />
-                </div>
-                <div>
-                  <img src="https://www.snowbird.com/uploaded/GROUPS/Weddings_Gina_Sean_0855.jpg" />
-                </div>
-                <div>
-                  <img src="https://img1.southernliving.timeinc.net/sites/default/files/styles/story_card_two_thirds/public/image/2017/06/main/autumn-charleston-wedding-jophoto-kn5a9998.jpg?itok=A8gDXji4" />
-                </div>
+                {
+                  carousel && carousel[0].fields.images.map((image) => {
+                    return (
+                      <div>
+                        <img src={image.fields.file.url} />
+                      </div>
+                    )
+                  })
+                }
               </Carousel>
             </div>
             <div className="contact">
@@ -200,20 +203,14 @@ class Home extends React.Component {
 
   getContent = () => {
     if (window.localStorage.content) {
-      const content = JSON.parse(window.localStorage.content);
-      this.info = content.filter((entry) => {
-        return entry.sys.contentType.sys.id === 'info';
-      });
+      this.info = JSON.parse(window.localStorage.content);
       return;
     }
 
     content.getContent()
       .then((res) => {
-        const info = res.filter((entry) => {
-          return entry.sys.contentType.sys.id === 'info';
-        });
         this.setState({
-          content: info
+          content: res
         });
       });
   }
