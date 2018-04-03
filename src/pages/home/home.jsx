@@ -188,10 +188,9 @@ class Home extends React.Component {
                   <br />
                   <FlatButton label="Submit" type="Submit" />
                 </form>
-                <span id="contact" className="anchor"></span>
               </div>
             </div>
-
+            <span id="contact" className="anchor"></span>
           </div>
         </div>
         <Footer />

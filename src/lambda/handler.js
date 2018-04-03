@@ -32,7 +32,7 @@ module.exports.sendEmail = (event, context, callback) => {
   console.log(`starting sendEmail: event: ${JSON.stringify(event)}, context: ${JSON.stringify(context)}`);
   const body = JSON.parse(event.body);
   const data = {
-    from: `${body.name} <${uuidv4()}@22-weddings.com>`,
+    from: `${body.name} <${uuidv4()}@mg.twentytwoweddings.com>`,
     'h:Reply-To': body.email,
     to: process.env.SEND_TO,
     subject: `👰🏼 Message for 22 Weddings & Events!`,

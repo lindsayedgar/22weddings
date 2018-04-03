@@ -93,6 +93,8 @@
   }
 
   .carousel-slider {
+    min-height: 50vh;
+
     .slide {
       background: white;
     }
@@ -120,6 +122,10 @@
           display: block;
         }
       }
+    }
+
+    .carousel-slider {
+      min-height: initial;
     }
 
     .contact {
